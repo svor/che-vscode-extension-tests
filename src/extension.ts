@@ -31,7 +31,7 @@ export function start(context: theia.PluginContext): void {
             mocha.useColors(true);
 
             const e = (c: any) => console.log(c);
-            ncp(context.extensionPath, '/projects/helloworld-test-sample', async (err: any) => {
+            ncp(context.extensionPath, '/projects/vscode-yaml', async (err: any) => {
                 if (err) {
                     return console.error(err);
                 }
