@@ -1,0 +1,11 @@
+apiVersion: 1.0.0
+metadata:
+  name: che-java-sample-tests
+components:
+  - id: redhat/java11/latest
+    type: chePlugin
+  - reference: https://raw.githubusercontent.com/che-incubator/che-java-tests/master/meta.yaml
+    type: chePlugin
+  - type: cheEditor
+    id: eclipse/che-theia/next
+    memoryLimit: 1024Mi

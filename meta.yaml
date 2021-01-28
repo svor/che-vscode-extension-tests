@@ -1,0 +1,16 @@
+
+apiVersion: v2
+publisher: Red Hat
+name: Java-Smoke-Test-Plugin
+version: 0.0.1
+type: Theia plugin
+displayName: Java Smoke Test Plugin
+title: Java-Smoke-Test-Plugin
+description: This plug-in runs Java tests against vscode-java inside of your workspace
+icon: https://www.eclipse.org/che/images/logo-eclipseche.svg
+repository: https://github.com/che-incubator/che-java-tests
+category: Language
+firstPublicationDate: "2020-08-20"
+spec:
+  extensions:
+    - https://github.com/che-incubator/che-java-tests/raw/master/che_java_test_theia_plugin.theia

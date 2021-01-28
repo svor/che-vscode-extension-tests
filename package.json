@@ -1,0 +1,46 @@
+{
+    "name": "che-vscode-test-theia-plugin",
+    "publisher": "theia",
+    "keywords": [
+        "theia-plugin"
+    ],
+    "version": "0.0.1",
+    "license": "none",
+    "files": [
+        "src"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "devDependencies": {
+        "@eclipse-che/plugin": "next",
+        "@theia/plugin-packager": "latest",
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^13.1.4",
+        "@types/vscode": "^1.41.0",
+        "rimraf": "2.6.2",
+        "typescript-formatter": "7.2.2"
+    },
+    "dependencies": {
+        "typescript": "2.9.2",
+        "@theia/plugin": "next",
+        "mocha": "^5.0.0",
+        "ncp": "^2.0.0",
+        "ts-mocha": "^6.0.0",
+        "ts-node": "^8.5.4"
+    },
+    "scripts": {
+        "prepare": "yarn run clean && yarn run build",
+        "clean": "rimraf lib",
+        "format-code": "tsfmt -r",
+        "watch": "tsc -watch",
+        "compile": "tsc",
+        "build": "yarn run format-code && yarn run compile && theia-plugin pack"
+    },
+    "engines": {
+        "theiaPlugin": "next"
+    },
+    "theiaPlugin": {
+        "backend": "lib/extension.js"
+    }
+}
