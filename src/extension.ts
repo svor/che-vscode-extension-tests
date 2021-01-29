@@ -32,7 +32,7 @@ export function start(context: theia.PluginContext): void {
             const e = (c: any) => console.log(c);
 
             console.log(" ------ Find tests files -------");
-            const testFiles = await theia.workspace.findFiles('/projects/vscode-yaml/out/test/*.test.js', undefined)
+            const testFiles = await theia.workspace.findFiles('**/*.test.js', undefined)
             console.log("Found: ");
             console.log(testFiles);
 
