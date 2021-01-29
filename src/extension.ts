@@ -32,7 +32,7 @@ export function start(context: theia.PluginContext): void {
             const e = (c: any) => console.log(c);
 
             console.log(" ------ Find tests files -------");
-            const testFiles = await theia.workspace.findFiles('**/test/*.test.ts', undefined)
+            const testFiles = await theia.workspace.findFiles('**/test/*.test.js', undefined)
             console.log("Found: ");
             console.log(testFiles);
 
