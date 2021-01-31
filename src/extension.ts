@@ -23,7 +23,7 @@ export function start(context: theia.PluginContext): void {
     context.subscriptions.push(
         theia.commands.registerCommand(runTestsCommand, async (...args: any[]) => {
             const mocha = new Mocha({
-                ui: 'bdd',
+                ui: 'tdd',
                 timeout: 60000,
                 reporter: testReporter
             });
