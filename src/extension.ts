@@ -36,7 +36,7 @@ export function start(context: theia.PluginContext): void {
             console.log("Found: ");
             console.log(testFiles);
 
-            mocha.addFile(path.resolve('/projects/vscode-yaml/out/test/schemaProvider.test.js'));
+            mocha.addFile(path.resolve('/projects/helloworld-test-sample/out/test/extension.test.js'));
             // Add files to the test suite
             testFiles.forEach(f => mocha.addFile(path.resolve(f.path)));
 
