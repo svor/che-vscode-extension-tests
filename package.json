@@ -13,6 +13,7 @@
         "*"
     ],
     "devDependencies": {
+        "@types/glob": "^7.1.1",
         "@eclipse-che/plugin": "next",
         "@theia/plugin-packager": "latest",
         "@types/mocha": "^5.2.7",
