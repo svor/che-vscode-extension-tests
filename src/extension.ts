@@ -32,11 +32,10 @@ export function start(context: theia.PluginContext): void {
             const e = (c: any) => console.log(c);
 
             console.log(" ------ Find tests files -------");
-            const testFiles = await theia.workspace.findFiles('**/test/*.test.js', undefined)
+            const testFiles = await theia.workspace.findFiles('**/test/**/*.test.js', '/node_modules/')
             console.log("Found: ");
             console.log(testFiles);
 
-            mocha.addFile(path.resolve('/projects/helloworld-test-sample/out/test/suite/extension.test.js'));
             // Add files to the test suite
             testFiles.forEach(f => mocha.addFile(path.resolve(f.path)));
 
