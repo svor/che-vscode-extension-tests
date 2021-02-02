@@ -34,7 +34,7 @@ export function start(context: theia.PluginContext): void {
 
             const e = (c: any) => console.log(c);
 
-            glob('**/**.test.js', { cwd: testsRoot }, (err, files) => {
+            glob('**/**.test.js', { cwd: '/projects' }, (err, files) => {
                 if (err) {
                     return e(err);
                 }
