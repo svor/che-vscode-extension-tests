@@ -29,9 +29,6 @@ export function start(context: theia.PluginContext): void {
                 reporter: testReporter
             });
             mocha.useColors(true);
-
-            const testsRoot = path.resolve(__dirname, '..');
-
             const e = (c: any) => console.log(c);
 
             glob('**/**.test.js', { cwd: '/projects' }, (err, files) => {
@@ -40,12 +37,11 @@ export function start(context: theia.PluginContext): void {
                 }
 
                 console.log(" ------ Find tests files -------");
-                //const testFiles = await theia.workspace.findFiles('**/*.*', '/node_modules/')
                 console.log("Found: ");
                 console.log(files);
 
                 // Add files to the test suite
-                files.forEach(f => mocha.addFile(path.resolve(testsRoot, f)));
+                files.forEach(f => mocha.addFile(path.resolve('/projects', f)));
 
                 try {
                     // Run the mocha test
