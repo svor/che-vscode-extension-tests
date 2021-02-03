@@ -17,47 +17,39 @@ import glob from 'glob';
 const testReporter = require('./test-reporter');
 
 export function start(context: theia.PluginContext): void {
-    const runTestsCommand = {
-        id: 'Run VS Code extension\'s tests',
-        label: "Run tests"
-    };
-    context.subscriptions.push(
-        theia.commands.registerCommand(runTestsCommand, async (...args: any[]) => {
-            const mocha = new Mocha({
-                ui: 'tdd',
-                timeout: 60000,
-                reporter: testReporter
-            });
-            mocha.useColors(true);
-            const e = (c: any) => console.log(c);
+    const mocha = new Mocha({
+        ui: 'tdd',
+        timeout: 60000,
+        reporter: testReporter
+    });
+    mocha.useColors(true);
+    const e = (c: any) => console.log(c);
 
-            glob('**/**.test.js', { cwd: '/projects' }, (err, files) => {
-                if (err) {
-                    return e(err);
-                }
+    glob('**/**.test.js', { cwd: '/projects' }, (err, files) => {
+        if (err) {
+            return e(err);
+        }
 
-                console.log("Found: ");
-                console.log(files);
+        console.log("Found: ");
+        console.log(files);
 
-                // Add files to the test suite
-                files.forEach(f => mocha.addFile(path.resolve('/projects', f)));
+        // Add files to the test suite
+        files.forEach(f => mocha.addFile(path.resolve('/projects', f)));
 
-                try {
-                    // Run the mocha test
-                    mocha.run((failures: any) => {
-                        theia.window.showInformationMessage('Tests completed! See results in test.log file');
-                        const resultFile = path.resolve('/projects', 'test.log');
-                        theia.commands.executeCommand('file-search.openFile', resultFile)
-                        if (failures > 0) {
-                            e(new Error(`${failures} tests failed.`));
-                        }
-                    });
-                } catch (err) {
-                    e(err);
+        try {
+            // Run the mocha test
+            mocha.run((failures: any) => {
+                theia.window.showInformationMessage('Tests completed! See results in test.log file');
+                const resultFile = path.resolve('/projects', 'test.log');
+                theia.commands.executeCommand('file-search.openFile', resultFile)
+                if (failures > 0) {
+                    e(new Error(`${failures} tests failed.`));
                 }
             });
-        })
-    )
+        } catch (err) {
+            e(err);
+        }
+    });
 }
 
 export function stop() {
