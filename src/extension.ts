@@ -25,7 +25,7 @@ export function start(context: theia.PluginContext): void {
     mocha.useColors(true);
     const e = (c: any) => console.log(c);
 
-    glob('**/**.test.js', { cwd: '/projects' }, (err, files) => {
+    glob('*/!(node_modules)/**/*.test.js', { cwd: '/projects' }, (err, files) => {
         if (err) {
             return e(err);
         }
