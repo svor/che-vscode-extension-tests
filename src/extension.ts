@@ -18,7 +18,7 @@ const testReporter = require('./test-reporter');
 
 export function start(context: theia.PluginContext): void {
     const mocha = new Mocha({
-        ui: 'bdd',
+        ui: 'tdd',
         timeout: 60000,
         reporter: testReporter
     });
