@@ -17,12 +17,6 @@ import glob from 'glob';
 const testReporter = require('./test-reporter');
 
 export function start(context: theia.PluginContext): void {
-    const mocha = new Mocha({
-        ui: 'tdd',
-        timeout: 60000,
-        reporter: testReporter
-    });
-    mocha.useColors(true);
     const runTestsCommand = {
         id: 'Run VS Code extension tests',
         label: "Run VS Code extension tests"
@@ -39,6 +33,13 @@ export function start(context: theia.PluginContext): void {
 }
 
 export function runTests() {
+    const mocha = new Mocha({
+        ui: 'tdd',
+        timeout: 60000,
+        reporter: testReporter
+    });
+    mocha.useColors(true);
+
     const e = (c: any) => console.log(c);
 
     glob('*/!(node_modules)/**/*.test.js', { cwd: '/projects' }, (err, files) => {
