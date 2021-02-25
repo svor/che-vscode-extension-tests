@@ -1,6 +1,12 @@
 apiVersion: 1.0.0
 metadata:
   name: che-helloworld-test-sample
+projects:
+  - name: helloworld-test-sample
+    source:
+      location: 'https://github.com/svor/helloworld-test-sample.git'
+      type: git
+      branch: main
 components:
   - mountSources: true
     memoryLimit: 3Gi
@@ -12,3 +18,10 @@ components:
   - id: eclipse/che-theia/next
     memoryLimit: 1024Mi
     type: cheEditor
+commands:
+  - name: 1. Build extension
+    actions:
+    - type: exec
+      component: che-dev
+      command: yarn && yarn compile
+      workdir: ${CHE_PROJECTS_ROOT}/helloworld-test-sample

@@ -6,11 +6,12 @@ version: 0.0.1
 type: Theia plugin
 displayName: Smoke Test Plugin
 title: Smoke-Test-Plugin
-description: This plug-in runs tests from VSCode extnesion
+description: This plug-in runs tests
 icon: https://www.eclipse.org/che/images/logo-eclipseche.svg
 repository: https://github.com/svor/che-vscode-extension-tests
 category: Language
 firstPublicationDate: "2021-01-28"
 spec:
   extensions:
-    - https://raw.githubusercontent.com/svor/che-vscode-extension-tests/main/vscode_extension_test_runner.theia
+    - https://raw.githubusercontent.com/svor/che-vscode-extension-tests/main/che_vscode_test_theia_plugin.theia
+    - https://raw.githubusercontent.com/svor/helloworld-test-sample/main/helloworld-sample-0.0.1.vsix
