@@ -23,6 +23,22 @@ export function start(context: theia.PluginContext): void {
         reporter: testReporter
     });
     mocha.useColors(true);
+    const runTestsCommand = {
+        id: 'Run VS Code extension tests',
+        label: "Run VS Code extension tests"
+    };
+
+    runTests();
+
+
+    context.subscriptions.push(
+        theia.commands.registerCommand(runTestsCommand, async (...args: any[]) => {
+            runTests();
+        })
+    );
+}
+
+export function runTests() {
     const e = (c: any) => console.log(c);
 
     glob('*/!(node_modules)/**/*.test.js', { cwd: '/projects' }, (err, files) => {
